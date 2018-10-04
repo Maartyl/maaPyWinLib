@@ -1,6 +1,6 @@
 from datetime import datetime
 import os
-from zipfile import ZipFile
+from zipfile import ZipFile, ZIP_DEFLATED
 import maa_win
 
 #yymmdd
@@ -20,6 +20,6 @@ def pack(name, out, files):
         maa_win.file_version_str(f0, '-'))
     nmo = os.path.join(out, nm + '.zip')
 
-    with ZipFile(nmo, 'w') as zf:
+    with ZipFile(nmo, 'w', ZIP_DEFLATED) as zf:
         for f in files:
             zf.write(*f)
